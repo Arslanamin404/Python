@@ -54,11 +54,19 @@ Navigate through the repository's directories to find learning notes, code examp
 If you have insights to share or improvements to suggest, I welcome contributions! Here's how you can contribute:
 
 1. **Fork the repository.**
-2. **Create a new branch for your contribution:** `git checkout -b feature-new-topic`.
-3. **Make your changes,** whether it's adding new content, fixing errors, or suggesting improvements.
-4. **Commit your changes:** `git commit -m "Add explanation for topic"`.
-5. **Push the changes to your forked repository:** `git push origin feature-new-topic`.
-6. **Open a pull request describing your changes.**
+2. **Create a new branch for your contribution:**
+3. ```bash
+4. git checkout -b feature-new-topic
+5. ```
+6. **Make your changes,** whether it's adding new content, fixing errors, or suggesting improvements.
+7. **Commit your changes:**
+8. ```bash git commit -m "Add explanation for topic"
+9. ```
+10. **Push the changes to your forked repository:**
+11. ```bash
+12. git push origin feature-new-topic
+13. ```
+14. **Open a pull request describing your changes.**
 
 ## License
 
