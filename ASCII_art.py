@@ -1,5 +1,6 @@
 # pip install pyfiglet
 from pyfiglet import Figlet
+from colorama import Fore, Back
 
 figlet = Figlet(font='speed')
 
@@ -13,5 +14,4 @@ fonts = figlet.getFonts()
 
 user_input = input("Enter Your Text: ")
 
-print(figlet.renderText(user_input))
-
+print(f"{Fore.RED}{figlet.renderText(user_input)}{Fore.RESET}")
