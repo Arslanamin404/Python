@@ -12,7 +12,7 @@ def readFile(file_name):
                 sst = line.split(',')[2]
                 sci = line.split(',')[3]
                 urd = line.split(',')[4]
-                eng = line.split(',')[4]
+                eng = line.split(',')[5]
 
                 print(f"Marks of {name} in Math is {float(mat)}")
                 print(f"Marks of {name} in SSt is {float(sst)}")
