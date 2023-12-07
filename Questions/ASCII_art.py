@@ -2,7 +2,7 @@
 from pyfiglet import Figlet
 from colorama import Fore, Back
 
-figlet = Figlet(font='speed')
+figlet = Figlet(font='slant')
 
 # get all the fonts in list
 fonts = figlet.getFonts()
