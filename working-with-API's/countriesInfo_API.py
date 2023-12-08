@@ -1,4 +1,5 @@
 import requests
+from colorama import Fore
 
 
 def getData(country):
@@ -8,17 +9,17 @@ def getData(country):
         country_data = response.json()
         return country_data
     except requests.RequestException as err:
-        print(f"Error occurred: {err}")
+        print(f"{Fore.RED}Error occurred: {err} {Fore.RESET}")
         return None
     except Exception as e:
-        print(f"Error! something unexpected occurred: {e}")
+        print(f"{Fore.RED}Error! something unexpected occurred: {e}{Fore.RESET}")
         return None
 
 
 def displayData(data):
     try:
         if data is None:
-            print("Failed to fetch the data!")
+            print(f"{Fore.RED}Error: Failed to fetch the data! {Fore.RESET}")
         else:
             print(f"Common Country Name: {data[0]['name']['common']}")
             print(f"Official Country Name: {data[0]['name']['official']}")
@@ -31,7 +32,7 @@ def displayData(data):
             print(f"Time Zone: {data[0]['timezones'][0]}")
 
     except Exception as err:
-        print(f"Error! Something unexpected occurred: {err}")
+        print(f"{Fore.RED}Error! Something unexpected occurred: {err} {Fore.RESET}")
 
 
 if __name__ == "__main__":
@@ -45,8 +46,14 @@ if __name__ == "__main__":
         countryData = getData(country_name)
         displayData(countryData)
         print("----------------------------------------------------------------------------------------------------")
-        print("Do you want to check again? [yes/no]")
-        choice = input("Enter your choice: ").lower()
+        while True:
+            print("Do you want to check again? [yes/no]")
+            choice = input("Enter your choice: ").lower()
+            if choice not in ['yes', 'no']:
+                print(
+                    f"\n {Fore.RED}Error: Invalid input please enter Yes to continue or No to exit!{Fore.RESET}\n")
+            else:
+                break
         print("--------------------------------------------------------------------------------------------------------------")
         if choice == "no":
             print("#########################################################################################################")
