@@ -18,12 +18,16 @@ def run_game():
     while current_round <= total_game_rounds and current_round <= total_game_rounds:
         print("\n----------------------------------------\n")
         print(f"\t\tRound: {current_round}")
-        current_round += 1
         print("\n----------------------------------------")
 
         cpu = cpuChoice()
         userChoice = input(
             "\nEnter your choice [rock,paper,scissor]: ").lower()
+        if userChoice not in ['rock', 'paper', 'scissor']:
+            print("\nInvalid Choice! Please enter rock, paper or scissor.\n")
+            continue
+        else:
+            current_round += 1
         print("--------------------------------")
         if userChoice == cpu:
             print(userName, ":", userChoice)
@@ -40,18 +44,12 @@ def run_game():
             print("You won!")
             userScore += 1
             print("User Score:", userScore, " CPU Score:", cpuScore)
-        elif (
-            (userChoice == "scissor" and cpu == "rock")
-            or (userChoice == "paper" and cpu == "scissor")
-            or (userChoice == "rock" and cpu == "paper")
-        ):
+        else:
             print(userName, ":", userChoice)
             print("CPU:", cpu)
             print("CPU won!")
             cpuScore += 1
             print("User Score:", userScore, " CPU Score:", cpuScore)
-        else:
-            print("Invalid input. Please try again. . .")
 
     print("\n\n-----------------------------------------------")
     print("\tUser Score:", userScore, "points")
