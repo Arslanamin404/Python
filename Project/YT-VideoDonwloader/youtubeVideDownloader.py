@@ -1,12 +1,13 @@
 import pytube
 import os
 
+
 def main():
+    os.system('cls')
     # Print a banner for the YouTube Video Downloader
     print("##############################################################################################")
     print("\t\t\t\t\tYouTube Video Downloader")
     print("##############################################################################################")
-
 
     try:
         # Get user input for the YouTube video URL
@@ -26,9 +27,11 @@ def main():
             video_stream.download(output_path="downloads")
 
             # Print a message after successful download
-            print('\n------------------------------------------------------------------------------')
+            print(
+                '\n------------------------------------------------------------------------------')
             print(f"Downloaded {yt.title} to the 'downloads' folder.")
-            print('------------------------------------------------------------------------------\n')
+            print(
+                '------------------------------------------------------------------------------\n')
         else:
             # Inform the user if no suitable video stream was found
             print("No suitable video stream found.")
@@ -39,11 +42,22 @@ def main():
     except Exception as e:
         # Handle other unexpected errors
         print(f"An error occurred: {str(e)}")
-    
+
     # Provide a clear exit message and wait for user input before exiting
-    print("###################################################################################")
-    input("\t\t\tPress Enter Key to exit.")
-    print("###################################################################################")
+    while True:
+        choice = input("\nDo you want to use again? Please enter Yes or No [Yes/No]: ").lower()
+        if choice not in ['yes', 'no']:
+            continue
+        else:
+            break
+
+    if choice == "yes":
+        main()
+    else:
+        print("\n###################################################################################")
+        print("Thankyou for using our software\nExiting. . .")
+        print("###################################################################################")
+
 
 if __name__ == "__main__":
     main()
