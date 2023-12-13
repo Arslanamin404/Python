@@ -16,7 +16,7 @@ def main():
         yt = pytube.YouTube(link)
 
         # Get the best available video stream
-        video_stream = yt.streams.first()
+        video_stream = yt.streams.filter(res='720p').first()
 
         if video_stream:
             # Create a directory for downloads if it doesn't exist
@@ -45,7 +45,8 @@ def main():
 
     # Provide a clear exit message and wait for user input before exiting
     while True:
-        choice = input("\nDo you want to use again? Please enter Yes or No [Yes/No]: ").lower()
+        choice = input(
+            "\nDo you want to use again? Please enter Yes or No [Yes/No]: ").lower()
         if choice not in ['yes', 'no']:
             continue
         else:
