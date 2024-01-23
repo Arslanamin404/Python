@@ -81,12 +81,8 @@ class MainFrame:
         
     def search_record(self):
         emp_id = self.emp_id.get() 
-        name = self.emp_name.get().title()
-        dept = self.emp_dept.get().upper()
-        salary = self.emp_salary.get()
-        
-        if not emp_id or not name or not dept or not salary:
-            messagebox.showerror("Empty Fields","Fill all the required fields")
+        if not emp_id:
+            messagebox.showerror("Empty Fields","Please enter employee id!")
         else:
             print("Record Searched")
         # to be continue
