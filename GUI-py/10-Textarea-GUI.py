@@ -9,38 +9,36 @@ def submit():
             file.write(f"{userInput}\n")
     except Exception as err:
         print(f"😔Error! Something unexpected occurred : {err}")
-        messagebox.showinfo(f"😔Error!", "Something unexpected occurred : {err}")
+        messagebox.showinfo(
+            f"😔Error!", "Something unexpected occurred : {err}")
     else:
         print("Notes saved successfully!✅")
-        messagebox.showinfo("Success!", "Note Saved Successfully to notes_DD.txt file.✅")
+        messagebox.showinfo(
+            "Success!", "Note Saved Successfully to notes_DD.txt file.✅")
 
 
 window = Tk()
-window.title("NoteCraft: Crafting Your Thoughts - Mohammad Arsalan Rather")
+window.minsize(600, 500)
+window.maxsize(600, 500)
+window.title("StickyNotes: Crafting Your Thoughts - Mohammad Arsalan Rather")
 window.iconbitmap("assets/notes_icon.ico")
 
 text = Text(window,
-            bg="light yellow",
             font=("Ink Free", 20),
-            height=10,
-            width=30,
-            padx=20,
-            pady=20,
-            fg="purple"
-            )
+            height=10, width=40,
+            padx=20, pady=20,
+            bg="light yellow", fg="purple")
 
 text.pack()
 btn = Button(window,
              padx=20,
-             fg="white",
-             bg="#1b1b1b",
+             fg="white", bg="#1b1b1b",
              activeforeground="white",
              activebackground="#6b6b6b",
              font=("Arial", 15),
-             text="Submit",
-             command=submit)
-btn.pack()
+             text="Save Note", command=submit)
+btn.pack(pady=10)
 admin = Label(window, text="©️Mohammad Arsalan Rather")
-admin.pack()
+admin.pack(pady=5)
 
 window.mainloop()

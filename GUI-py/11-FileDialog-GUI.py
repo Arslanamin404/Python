@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import filedialog
+from tkinter import messagebox
 
 
 def open_file():
@@ -7,19 +8,28 @@ def open_file():
                                           filetypes=(("Text files", "*.txt"),
                                                      ("All files", "*.*")))
     with open(filepath, "r") as file:
-        print(file.read())
+        content = file.read()
+        text.delete("1.0", END)  # delete existing contents
+        text.insert(END, content)
+    window.title(f"FileDialog - {filepath}")
 
 
 def save_file():
-    file = filedialog.asksaveasfile(defaultextension='.txt',
-                                    filetypes=[
-                                        ("Text file", ".txt"),
-                                        ("HTML", ".html"),
-                                        ("All Files", "*.*")
-                                    ])
-    file_text = str(text.get("1.0", END))
-    file.write(file_text)
-    file.close()
+    try:
+        file = filedialog.asksaveasfile(defaultextension='.txt',
+                                        filetypes=[
+                                            ("Text file", ".txt"),
+                                            ("HTML", ".html"),
+                                            ("All Files", "*.*")
+                                        ])
+        file_text = str(text.get("1.0", END))
+        file.write(file_text)
+        messagebox.showinfo("Success!", "File saved successfully✅!")
+    except Exception as err:
+        messagebox.showwarning(
+            "Something unexpected occurred!", f"Error: {err}⚠️")
+    finally:
+        file.close()
 
 
 window = Tk()

@@ -58,7 +58,7 @@ class UserDetails():
             messagebox.showinfo("Success!", "Registered Successfully!")
             n = self.name.get()
             p = self.password.get()
-            self.detail["text"] = f"Name: {n}\nPassword: {p}"
+            self.detail["text"] = f"Username: {n}\nPassword: {p}"
 
     def check(self, event):
         self.register()
