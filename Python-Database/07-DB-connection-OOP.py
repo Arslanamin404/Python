@@ -49,7 +49,7 @@ class CRUD:
 
         query = "INSERT INTO employees (employee_name, department, salary) VALUES (%s, %s, %s)"
         data = (emp_name, emp_dept, emp_salary)
-        database.execute_query(query, data)
+        self.database.execute_query(query, data)
         print("\nEmployee Record Inserted Successfully.\n")
 
         print("Press Any Key To Continue...")
@@ -57,7 +57,7 @@ class CRUD:
 
     def view_records(self):
         query = "SELECT * FROM employees"
-        rows = database.execute_query(query)
+        rows = self.database.execute_query(query)
         print("-----------------------------------------------------------------")
         print(f"{'Emp-ID':<15}{'NAME':<20}{'DEPARTMENT':<20}{'SALARY'}")
         print("-----------------------------------------------------------------")
@@ -71,7 +71,7 @@ class CRUD:
         emp_id = int(input("Enter Employee ID to Search: "))
         query = "SELECT * FROM employees WHERE id = %s"
         data = (emp_id,)
-        result = database.execute_query(query, data)
+        result = self.database.execute_query(query, data)
         if result:
             for row in result:
                 print(f"Employee ID: {row[0]}")
@@ -87,7 +87,7 @@ class CRUD:
         emp_id = int(input("Enter Employee ID to Delete: "))
         query = "DELETE FROM employees WHERE id = %s"
         data = (emp_id,)
-        database.execute_query(query, data)
+        self.database.execute_query(query, data)
         print("Employee Record Deleted Successfully.")
         print("Press Any Key To Continue...")
         getch()
@@ -102,8 +102,8 @@ def main():
         print("1. Insert Employee Record\n2. View All Records\n3. Search Employee Record\n4. Delete Employee Record\n5. Exit\n")
         try:
             user_choice = int(input("Enter Your Choice [1/2/3/4/5]: "))
-            database = MyDatabase()
-            curd = CRUD(database)
+            myDB = MyDatabase()
+            curd = CRUD(myDB)
             if user_choice == 1:
                 curd.insert_record()
             elif user_choice == 2:
@@ -112,7 +112,6 @@ def main():
                 curd.search_employee()
             elif user_choice == 4:
                 curd.delete_employee()
-
             elif user_choice == 5:
                 print("Exiting...")
                 time.sleep(1)
